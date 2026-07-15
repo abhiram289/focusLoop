@@ -1,0 +1,13 @@
+[general]
+resolution = [832, 480]
+caption_extension = ".txt"
+batch_size = 1
+
+[[datasets]]
+video_directory = "C:/wan_project/dataset/clips"
+target_frames = [16]
+frame_extraction = "head"
+frame_stride = 1
+frame_sample = 1
+max_frames = 16
+source_fps = 16.0
