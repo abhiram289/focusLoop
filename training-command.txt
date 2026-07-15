@@ -1,0 +1,23 @@
+accelerate launch --mixed_precision bf16 src/musubi_tuner/wan_train_network.py ^
+  --task t2v-1.3B ^
+  --dit C:/wan_project/wan_weights/diffusion_pytorch_model.safetensors ^
+  --vae C:/wan_project/wan_weights/Wan2.1_VAE.pth ^
+  --t5 C:/wan_project/wan_weights/models_t5_umt5-xxl-enc-bf16.pth ^
+  --dataset_config C:/wan_project/wan_dataset_config.toml ^
+  --sdpa ^
+  --fp8_base ^
+  --optimizer_type adamw8bit ^
+  --learning_rate 2e-4 ^
+  --gradient_checkpointing ^
+  --max_data_loader_n_workers 2 ^
+  --persistent_data_loader_workers ^
+  --network_module networks.lora_wan ^
+  --network_dim 64 ^
+  --network_alpha 64 ^
+  --timestep_sampling shift ^
+  --discrete_flow_shift 3.0 ^
+  --max_train_epochs 10 ^
+  --save_every_n_epochs 1 ^
+  --seed 42 ^
+  --output_dir C:/wan_project/output ^
+  --output_name wan_lora
